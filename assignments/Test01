@@ -1,0 +1,102 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//#4
+Stats aggregateVals(int A[], int SIZE)
+{
+	Stats S;
+	S.min = A[0];
+	S.max = A[0];
+	S.avg = 0.0;
+	S.sum = 0;
+
+	for (int i = 0; i < SIZE; i++)
+	{
+		if (A[i] < S.min)
+		{
+			S.min = A[i];
+		}
+		if (A[i] > S.max)
+		{
+			S.max = A[i];
+		}
+		S.sum += A[i];
+	}
+	S.avg = S.sum / SIZE;
+
+	return S;
+}
+
+
+//#5
+struct Stats {
+	int min;
+	int max;
+	double avg;
+	int sum;
+
+	Stats() {
+		min = INT_MAX;
+		max = INT_MIN;
+		avg = 0.0;
+		sum = 0;
+	}
+
+};
+
+//#6
+double calcStdDev(int A[], int SIZE)
+{	
+	double stanD = 0.0, sum = 0.0, mean = 0.0;
+
+		for (int i = 0; i < SIZE; i++)
+		{
+			sum += A[i];
+		}
+		mean = sum / SIZE;
+
+		for (int i = 0; i < SIZE; i++)
+		{
+			A[i] = pow(A[i] - mean, 2);
+			sum += A[i];
+		}
+		mean = sum / SIZE;
+		stanD = sqrt(mean);
+
+	return stanD;
+}
+
+//#7
+int initArray(int A[])
+{
+	int size = 0, x;
+	cout << "Enter a number that will allocate the size of memory for an array\n";
+	cin >> x;
+	for (int i = 0; i < x; i++) {
+		A[size] = x;
+		A[i] = 0;
+	}
+
+	return size;
+}
