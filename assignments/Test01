@@ -29,7 +29,7 @@ Stats aggregateVals(int A[], int SIZE)
 	S.min = A[0];
 	S.max = A[0];
 	S.avg = 0.0;
-	S.sum = 0;
+	S.sum = 0.0;
 
 	for (int i = 0; i < SIZE; i++)
 	{
@@ -54,13 +54,13 @@ struct Stats {
 	int min;
 	int max;
 	double avg;
-	int sum;
+	double sum;
 
 	Stats() {
 		min = INT_MAX;
 		max = INT_MIN;
 		avg = 0.0;
-		sum = 0;
+		sum = 0.0;
 	}
 
 };
