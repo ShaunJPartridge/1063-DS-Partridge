@@ -1,3 +1,12 @@
+/**
+* ListStack.hpp
+*
+* List Based Stack implementation
+* Author: Shaun Partridge
+* Date: Oct. 14, 2019
+*/
+
+
 #include <iostream>
 #include "ListStack.h"
 
@@ -18,19 +27,9 @@ ostream& operator<<(ostream& os, const Animal* a) {
  *     void
  */
 ListStack::ListStack() {
-	Top = NULL;
+	Top = NULL; // Stack is empty
 	
 }
-
-/**
-* ListStack
-* Purpose:
-*	  Overloads the constructor
-* Parms:
-*	  void
-* Returns:
-*	  void
-*/
 
 /**
  * Push
