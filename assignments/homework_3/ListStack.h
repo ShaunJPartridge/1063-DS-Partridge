@@ -1,8 +1,8 @@
 /**
 * ListStack.h
 *
-* List stack definition file. This stack hold animal types. Why? Cause integers
-* get a little boring after a while.
+* List stack definition file. This stack hold animal types. Each node will hold
+* an animals name, weight, and scary.
 *
 * Author: Shaun Partridge
 * Date: October 10th, 2019
@@ -66,7 +66,7 @@ struct Node {
  */
 class ListStack {
 private:
-	Node* Top;
+	Node* Top; //Keeps track of Top
 
 public:
 	ListStack();          // constructor
