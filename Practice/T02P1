@@ -1,0 +1,166 @@
+#include <iostream>
+#include <fstream>
+#include<string>
+#include<cmath>
+
+using namespace std;
+
+struct Node {
+	//int data;
+	string data;
+	Node* next;
+	// Default Constructor
+	Node() {
+		data = " ";
+		next = NULL;
+	}
+
+	//Q1
+	Node(string d) {
+		data = d;
+		//data = d;
+		next = NULL;
+	}
+	/*
+	Node(int d, Node* n = NULL) {
+		data = d;
+		next = n;
+	}
+	*/
+};
+
+class List {
+private:
+	Node* first;
+	Node* last;
+public:
+	List() {
+		first = NULL;
+		last = NULL;
+	}
+
+	void FrontSert(string data) {
+	
+		if (last != NULL)
+		{
+			last->next = new Node(data);
+			last = last->next;
+		}
+		else 
+		{
+			first = new Node(data);
+			last = first;
+		}
+	}
+
+	//Q2
+	bool Find(Node* nptr, string key) {
+		nptr = first;
+		while (nptr->next != NULL) {
+			nptr = nptr->next;
+			if (nptr->next->data == key)
+			{	//cout << "The key " << key << " was found";
+				return true;
+			}
+		} 	
+		return false;
+	}
+
+	//Q3
+	void DeleteAll(Node* nptr) {
+		nptr = first;
+		while (nptr->next != NULL) {
+			delete[]nptr->next;
+		}
+	}
+
+	//Q4
+	string Pop(Node* nptr) {
+		string result = first->data;
+		nptr = first;
+		first = first->next;
+		delete[] nptr;
+		return result;
+	}
+
+	//Q7
+	
+	void Delete(Node* nptr, string key) {
+		nptr = first;
+		Node* prev = new Node;
+		string data = first->data;
+
+		if (first->data == key) {
+			first = first->next;
+			delete nptr;
+		}
+			else
+			{ 
+				prev = first;
+				data = first->data;
+				while (nptr->next != NULL) {
+					prev = nptr;
+					nptr = nptr->next;
+					//data = nptr->data;
+
+					if (nptr->next->data == key) {
+					nptr->next = prev->next;
+					delete nptr;
+					}
+				}
+
+				
+				/*
+				else if (nptr->next == NULL) {
+					delete nptr;
+					nptr = nptr->next;
+				}*/
+
+			}
+			
+	}
+	
+
+	void Print() {
+		Node* nptr = first;
+		while (nptr->next != NULL) {
+			cout << nptr->data << " ";
+			nptr = nptr->next;
+		}
+		cout << endl;
+	}
+};
+
+
+int main() {
+
+	//int val = 0;
+	string color;
+	Node* tptr = NULL;
+	List mylist;
+	ifstream fin;
+	fin.open("datafile.txt");
+	while (!fin.eof()) {
+		fin >> color;
+		mylist.FrontSert(color);
+		
+	}
+	mylist.Print();
+    mylist.Delete(tptr,"green");
+
+	
+	mylist.Print();
+	/*
+	for (int i = 0; i < 6; i++) {
+		mylist.FrontSert(i);
+	}
+	*/
+	
+	//mylist.Pop(tptr);
+	
+	//mylist.Find(tptr, 6);
+	
+
+
+	return 0;
+}
